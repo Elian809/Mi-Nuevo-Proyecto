@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Airline Reservation - Registrarse</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="login-wrap">
+    <div class="login-hero"><span>✈️</span></div>
+    <div class="login-panel">
+      <div class="login-box">
+        <div class="brand">
+          <span class="icon">✈️</span>
+          <h1>AIRLINE<br>RESERVATION</h1>
+        </div>
+        <h2>Crear Cuenta</h2>
+        <div id="error" class="error-msg hidden"></div>
+        <form id="form-registro">
+          <div class="field">
+            <label>Nombre completo</label>
+            <input type="text" id="nombre" required>
+          </div>
+          <div class="field">
+            <label>Correo electrónico</label>
+            <input type="email" id="email" required>
+          </div>
+          <div class="field">
+            <label>Contraseña</label>
+            <input type="password" id="password" minlength="6" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Registrarse</button>
+        </form>
+        <p class="foot-link">¿Ya tienes cuenta? <a href="index.html" style="color:#2563eb;font-weight:600;">Inicia sesión</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script>
+    document.getElementById('form-registro').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const errorBox = document.getElementById('error');
+      errorBox.classList.add('hidden');
+
+      try {
+        await apiFetch('/auth/register', {
+          method: 'POST',
+          body: JSON.stringify({ nombre, email, password }),
+        });
+        window.location.href = 'index.html';
+      } catch (err) {
+        errorBox.textContent = err.message;
+        errorBox.classList.remove('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

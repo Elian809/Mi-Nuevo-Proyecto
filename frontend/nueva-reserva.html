@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Airline Reservation - Nueva Reserva</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+    <div id="sidebar-container"></div>
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h1>Nueva Reserva</h1>
+          <p>Selecciona tu vuelo, clase y asiento</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:16px;">
+        <h3 style="margin-top:0;">Información del Vuelo</h3>
+        <div class="form-row">
+          <div class="field">
+            <label>Vuelo</label>
+            <select id="sel-vuelo"></select>
+          </div>
+          <div class="field">
+            <label>Clase</label>
+            <select id="sel-clase">
+              <option>Económica</option>
+              <option>Económica Plus</option>
+              <option>Business</option>
+              <option>Primera Clase</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Fecha</label><input type="text" id="info-fecha" disabled></div>
+          <div class="field"><label>Hora</label><input type="text" id="info-hora" disabled></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-top:0;">Seleccione Asiento</h3>
+        <div class="seat-map">
+          <div>
+            <div class="seat-cols">
+              <div class="seat-header">A</div><div class="seat-header">B</div><div class="seat-header">C</div>
+              <div class="aisle"></div>
+              <div class="seat-header">D</div><div class="seat-header">E</div><div class="seat-header">F</div>
+            </div>
+            <div id="mapa-asientos" style="margin-top:8px;"></div>
+          </div>
+          <div>
+            <div class="legend">
+              <div><span class="box" style="background:#fff;"></span>Disponible</div>
+              <div><span class="box" style="background:var(--green);"></span>Seleccionado</div>
+              <div><span class="box" style="background:#fecaca;"></span>Ocupado</div>
+              <div><span class="box" style="background:#e5e7eb;"></span>No disponible</div>
+            </div>
+            <div class="card" style="margin-top:20px; background:var(--gray-bg);">
+              <strong>Resumen</strong>
+              <p style="margin:10px 0 4px;">Clase: <span id="resumen-clase">Económica</span></p>
+              <p style="margin:4px 0;">Asientos: <span id="resumen-asientos">-</span></p>
+              <p style="margin:4px 0;">Precio por asiento: <span id="resumen-precio">$0.00</span></p>
+              <hr style="border:none;border-top:1px solid var(--border);">
+              <p style="font-weight:700;">Total: <span id="resumen-total">$0.00</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="actions" style="margin-top:20px;">
+          <button class="btn btn-secondary" onclick="window.location.href='vuelos.html'">Cancelar</button>
+          <button class="btn btn-primary" style="width:auto;" id="btn-continuar">Continuar</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/nueva-reserva.js"></script>
+</body>
+</html>

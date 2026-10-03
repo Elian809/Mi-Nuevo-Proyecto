@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Airline Reservation - Usuarios</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+    <div id="sidebar-container"></div>
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h1>Usuarios</h1>
+          <p>Administra los usuarios del sistema</p>
+        </div>
+        <button class="btn btn-primary" style="width:auto;" id="btn-nuevo">+ Nuevo Usuario</button>
+      </div>
+
+      <div class="card">
+        <div class="table-toolbar">
+          <input type="text" id="buscar" placeholder="Buscar: nombre, email o rol...">
+          <select id="filtro-rol">
+            <option value="Todos">Todos los roles</option>
+            <option value="Cliente">Cliente</option>
+            <option value="Administrador">Administrador</option>
+          </select>
+        </div>
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Nombre</th><th>Email</th><th>Rol</th><th>Puntos</th><th>Estado</th><th>Acciones</th></tr>
+          </thead>
+          <tbody id="tbody-usuarios"></tbody>
+        </table>
+        <div class="pagination" id="paginacion"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal Nuevo/Editar Usuario -->
+  <div class="modal-overlay hidden" id="modal-usuario">
+    <div class="modal">
+      <h3 id="modal-titulo">Nuevo Usuario</h3>
+      <form id="form-usuario">
+        <input type="hidden" id="u-id">
+        <div class="field"><label>Nombre</label><input type="text" id="u-nombre" required></div>
+        <div class="field"><label>Email</label><input type="email" id="u-email" required></div>
+        <div class="field" id="wrap-password"><label>Contraseña</label><input type="password" id="u-password" placeholder="Por defecto: 123456"></div>
+        <div class="form-row">
+          <div class="field">
+            <label>Rol</label>
+            <select id="u-rol"><option>Cliente</option><option>Administrador</option></select>
+          </div>
+          <div class="field" id="wrap-estado" style="display:none;">
+            <label>Estado</label>
+            <select id="u-estado"><option>Activo</option><option>Inactivo</option></select>
+          </div>
+        </div>
+        <div id="modal-error" class="error-msg hidden"></div>
+        <div class="actions">
+          <button type="button" class="btn btn-secondary" id="btn-cancelar">Cancelar</button>
+          <button type="submit" class="btn btn-primary" style="width:auto;">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-overlay hidden" id="modal-eliminar">
+    <div class="modal">
+      <h3>Eliminar usuario</h3>
+      <p>¿Seguro que deseas eliminar este usuario?</p>
+      <div class="actions">
+        <button class="btn btn-secondary" id="btn-cancelar-eliminar">Cancelar</button>
+        <button class="btn btn-danger" id="btn-confirmar-eliminar">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/usuarios.js"></script>
+</body>
+</html>

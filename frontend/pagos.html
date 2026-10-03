@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Airline Reservation - Pagos</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+    <div id="sidebar-container"></div>
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h1>Pagos</h1>
+          <p>Historial de pagos realizados</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="table-toolbar">
+          <input type="text" id="buscar" placeholder="Buscar: reserva, método o estado...">
+          <select id="filtro-estado">
+            <option value="Todos">Todos</option>
+            <option value="Completado">Completado</option>
+            <option value="Pendiente">Pendiente</option>
+            <option value="Cancelado">Cancelado</option>
+          </select>
+        </div>
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Reserva</th><th>Método</th><th>Monto</th><th>Fecha</th><th>Estado</th><th>Transacción</th></tr>
+          </thead>
+          <tbody id="tbody-pagos"></tbody>
+        </table>
+        <div style="display:flex; justify-content:space-between; margin-top:14px; font-size:14px;">
+          <span id="total-pagos"></span>
+          <strong>Total Monto: <span id="total-monto"></span></strong>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/pagos.js"></script>
+</body>
+</html>

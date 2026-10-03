@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Airline Reservation - Procesar Pago</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+    <div id="sidebar-container"></div>
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h1>Procesar Pago</h1>
+          <p>Completa el pago para confirmar tu reserva</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="margin-top:0;">Información de la Reserva</h3>
+          <p>Reserva #: <strong id="r-id"></strong></p>
+          <p>Vuelo: <strong id="r-vuelo"></strong></p>
+          <p>Ruta: <strong id="r-ruta"></strong></p>
+          <p>Fecha: <strong id="r-fecha"></strong></p>
+          <p>Clase: <strong id="r-clase"></strong></p>
+          <p>Asientos: <strong id="r-asientos"></strong></p>
+          <hr style="border:none;border-top:1px solid var(--border);">
+          <p style="font-size:18px;">Total a Pagar: <strong id="r-total" style="color:var(--blue);"></strong></p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin-top:0;">Método de Pago</h3>
+          <form id="form-pago">
+            <div class="field">
+              <label>Método</label>
+              <select id="p-metodo">
+                <option>Tarjeta de Crédito</option>
+                <option>Tarjeta de Débito</option>
+                <option>PayPal</option>
+                <option>Transferencia</option>
+              </select>
+            </div>
+            <div class="field" id="wrap-tarjeta">
+              <label>Número de Tarjeta</label>
+              <input type="text" id="p-numero" placeholder="4111 1111 1111 1111" maxlength="19">
+            </div>
+            <div class="form-row" id="wrap-fecha-cvv">
+              <div class="field">
+                <label>Fecha de Expiración</label>
+                <div style="display:flex; gap:6px;">
+                  <input type="text" id="p-mes" placeholder="MM" maxlength="2" style="width:60px;">
+                  <input type="text" id="p-anio" placeholder="AA" maxlength="2" style="width:60px;">
+                </div>
+              </div>
+              <div class="field">
+                <label>CVV</label>
+                <input type="text" id="p-cvv" placeholder="123" maxlength="4">
+              </div>
+            </div>
+            <div class="field" id="wrap-titular">
+              <label>Titular de la Tarjeta</label>
+              <input type="text" id="p-titular" placeholder="NOMBRE APELLIDO">
+            </div>
+            <div id="pago-error" class="error-msg hidden"></div>
+            <div class="actions">
+              <button type="button" class="btn btn-secondary" onclick="window.location.href='mis-reservas.html'">Cancelar</button>
+              <button type="submit" class="btn btn-primary" style="width:auto; background:var(--green);">🔒 Procesar Pago</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/procesar-pago.js"></script>
+</body>
+</html>

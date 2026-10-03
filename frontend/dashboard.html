@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Airline Reservation - Dashboard</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+    <div id="sidebar-container"></div>
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h1>Dashboard</h1>
+          <p>Bienvenido, <span id="bienvenida"></span></p>
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="card kpi">
+          <div class="kpi-label">Vuelos Activos</div>
+          <div class="kpi-value" id="kpi-vuelos">-</div>
+          <a href="vuelos.html">Ver detalles →</a>
+        </div>
+        <div class="card kpi">
+          <div class="kpi-label">Reservas</div>
+          <div class="kpi-value" id="kpi-reservas">-</div>
+          <a href="mis-reservas.html">Ver detalles →</a>
+        </div>
+        <div class="card kpi">
+          <div class="kpi-label">Pagos</div>
+          <div class="kpi-value" id="kpi-pagos">-</div>
+          <a href="pagos.html">Ver detalles →</a>
+        </div>
+        <div class="card kpi" id="kpi-usuarios-card">
+          <div class="kpi-label">Usuarios</div>
+          <div class="kpi-value" id="kpi-usuarios">-</div>
+          <a href="usuarios.html">Ver detalles →</a>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="margin-top:0;">Reservas por Mes</h3>
+          <canvas id="chart-mes" height="140"></canvas>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0;">Reservas por Clase</h3>
+          <canvas id="chart-clase" height="140"></canvas>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-top:0;">Reservas Recientes</h3>
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Usuario</th><th>Vuelo</th><th>Ruta</th><th>Fecha</th><th>Total</th><th>Estado</th></tr>
+          </thead>
+          <tbody id="tbody-recientes"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
